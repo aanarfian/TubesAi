@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-img = cv2.imread('assets/assets/apelAI.jpg', 0)
+img = cv2.imread('apelAI.jpg', 0)
 gblur = cv2.GaussianBlur(img, (11, 11), 0)
 _, th1 = cv2.threshold(gblur, 230, 255, cv2.THRESH_BINARY)
 # kernel = np.ones((5, 5), np.float32)/25
