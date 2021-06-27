@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import math
 
 img = cv2.imread('apelAI.jpg')
 imgGrey = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -8,7 +9,7 @@ contours, _ = cv2.findContours(thrash, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
 
 cv2.imshow("img", img)
 for contour in contours:
-    approx = cv2.approxPolyDP(contour, 0.01* cv2.arcLength(contour, True), True)
+    approx = cv2.approxPolyDP(contour, 0.1* cv2.arcLength(contour, True), True)
     cv2.drawContours(img, [approx], 0, (0, 0, 0), 5)
     x = approx.ravel()[0]
     y = approx.ravel()[1] - 5
@@ -29,6 +30,12 @@ for contour in contours:
     else:
         cv2.putText(img, "Circle", (x, y), cv2.FONT_HERSHEY_COMPLEX, 0.5, (0, 0, 0))
 
+perimeter = cv2.arcLength(contour,True)
+area = cv2.contourArea(contour)
+circularity = (4*math.pi*area)/perimeter**2
+print(area)
+print(perimeter)
+print(circularity)
 
 cv2.imshow("shapes", img)
 cv2.waitKey(0)
