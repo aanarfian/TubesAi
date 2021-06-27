@@ -6,21 +6,15 @@ from skimage.feature import greycomatrix
 import csv
 
 for i in range(13) :
+    # pathfile = "mentah/" +str(i+1)+ ".jpg"
     pathfile = "mateng/" +str(i+1)+ ".jpg"
+    # load image dan convert grayscale
     img = cv2.imread(pathfile, 0)
+    # menghaluskan gambar dengan blur
     gblur = cv2.GaussianBlur(img, (5, 5), 0)
 
-    # cv2.imshow("shapes", gblur)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
 
-    # _, (cH, cV, cD) = dwt2(gblur.T, 'db1')
-    # # a - LL, h - LH, v - HL, d - HH as in matlab
-    # energy = (cH**2 + cV**2 + cD**2).sum()/gblur.size
     m,n = gblur.shape
-    # print(gblur.shape)
-    # print(m)
-    # print(n)
     cA, (cH, cV, cD) = dwt2(gblur,'db1')
     # a - LL, h - LH, v - HL, d - HH as in matlab
     cHsq = [[elem * elem for elem in inner] for inner in cH]
@@ -47,11 +41,13 @@ for i in range(13) :
     R = 1 - 1/(1+std[0][0]**2)
     print("smoothness", R)
 
-    with open('data_training.csv', mode='a', newline="") as data_training:
+    
+    with open('data_training1.csv', mode='a', newline="") as data_training:
         data_write = csv.writer(data_training, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
         data_write.writerow([Energy, entropy, std[0][0], mean[0][0], R, 1])
 
-
-
-
-
+        
+# window
+# cv2.imshow("shapes", gblur)
+# cv2.waitKey(0)
+# cv2.destroyAllWindows()
