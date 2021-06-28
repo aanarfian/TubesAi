@@ -1,8 +1,8 @@
 import csv
 import image_extraction as ie
 
-for i in range(16):
-    pathfile = "mateng/" +str(i+1)+ ".jpg"
+for i in range(5):
+    pathfile = "mentah/baru/" +str(i+11)+ ".jpg"
     gblur = ie.process_image(pathfile)
     energy = ie.get_energy(gblur)
     entropy = ie.get_entropy(gblur)
@@ -11,4 +11,4 @@ for i in range(16):
 
     with open('data_training2.csv', mode='a', newline="") as data_training:
         data_write = csv.writer(data_training, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-        data_write.writerow([energy, entropy, st_deviation, intensity, smoothness, 'matang'])
+        data_write.writerow([energy, entropy, st_deviation, intensity, smoothness, 'mentah'])
