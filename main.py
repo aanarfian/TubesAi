@@ -10,7 +10,7 @@ intensity, st_deviation = im.get_intensity_and_st_deviation(gblur)
 smoothness = im.get_smoothnes(st_deviation)
 
 # Load data training
-filename = 'data_training1.csv'
+filename = 'data_training2.csv'
 dataset = nb.load_csv(filename)
 
 # convert string ke float
