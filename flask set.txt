@@ -1,0 +1,3 @@
+set FLASK_APP=uicopy.py
+$env:FLASK_APP="uicopy.py"
+.venv\Scripts\activate

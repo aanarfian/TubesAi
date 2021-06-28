@@ -19,42 +19,67 @@
     <div class="container layout-page">
         <div class="row d-flex align-items-center" style="min-height: 100vh;">
             <div class="col">
+                <form action="/" method="POST" enctype="multipart/form-data" name="inputfile">
+                    <div class="mb-3 form-group">
+                        <label for="formFile" class="form-label">file input</label>
+                        <input class="form-control mb-2" type="file" name="file" id="formFile" required>
+                        <button class="btn-primary">Upload File</button>
+                    </div>
+                </form>
                 <div class="mb-3">
-                    <label for="formFile" class="form-label">file input</label>
-                    <input class="form-control" type="file" id="formFile">
+                    <p>Energy</p>
+                    <div class="alert alert-light border" role="alert">
+                        {{content[0]}}
+                    </div>
+                    <!-- <label for="Energy" class="col-form-label">Energy</label>
+                    <input type="text" class="form-control" id="Energy" disabled value=""> -->
                 </div>
                 <div class="mb-3">
-                    <label for="inputPassword" class="col-form-label">Energy</label>
-                    <input type="text" class="form-control" id="inputPassword" disabled>
+                    <p>Entropy</p>
+                    <div class="alert alert-light border" role="alert">
+                        {{content[1]}}
+                    </div>
                 </div>
                 <div class="mb-3">
-                    <label for="inputPassword" class="col-form-label">Entropy</label>
-                    <input type="text" class="form-control" id="inputPassword" disabled>
+                    <p>Rerata Intensitas</p>
+                    <div class="alert alert-light border" role="alert">
+                        {{content[2]}}
+                    </div>
                 </div>
                 <div class="mb-3">
-                    <label for="inputPassword" class="col-form-label">Rerata Intensitas</label>
-                    <input type="text" class="form-control" id="inputPassword" disabled>
+                    <p>Rerata Kontras</p>
+                    <div class="alert alert-light border" role="alert">
+                        {{content[3]}}
+                    </div>
                 </div>
                 <div class="mb-3">
-                    <label for="inputPassword" class="col-form-label">Rerata Kontras</label>
-                    <input type="text" class="form-control" id="inputPassword" disabled>
-                </div>
-                <div class="mb-3">
-                    <label for="inputPassword" class="col-form-label">Smoothness</label>
-                    <input type="text" class="form-control" id="inputPassword" disabled>
+                    <p>Smoothness</p>
+                    <div class="alert alert-light border" role="alert">
+                        {{content[4]}}
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col">
                         <div class="mb-3">
-                            <label for="inputPassword" class="col-form-label">Matang</label>
-                            <input type="text" class="form-control" id="inputPassword" disabled>
+                            <p>Matang</p>
+                            <div class="alert alert-light border" role="alert">
+                                {{content[5]}}
+                            </div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
-                            <label for="inputPassword" class="col-form-label">mentah</label>
-                            <input type="text" class="form-control" id="inputPassword" disabled>
+                            <p>Mentah</p>
+                            <div class="alert alert-light border" role="alert">
+                                {{content[6]}}
+                            </div>
                         </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <p>Classified</p>
+                    <div class="alert alert-light border" role="alert">
+                        {{content[7]}}
                     </div>
                 </div>
             </div>
@@ -73,6 +98,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
