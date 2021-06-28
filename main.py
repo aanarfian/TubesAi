@@ -2,7 +2,7 @@ import image_extraction as im
 import naive_bayes as nb
 
 # Extract Feature dulu gan
-pathfile = 'asset/data_test/mentah_test/1.jpg'
+pathfile = 'asset/data_test/mateng_test/1.jpg'
 gblur = im.process_image(pathfile)
 energy = im.get_energy(gblur)
 entropy = im.get_entropy(gblur)
@@ -66,15 +66,9 @@ print('- Data=%s\n- Predicted: %s\n- Probabilities: %s' % (row, label[0], label[
 #     print("smoothness", R)
 
     
-<<<<<<< HEAD
-    with open('data_training.csv', mode='a', newline="") as data_training:
-        data_write = csv.writer(data_training, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-        data_write.writerow([Energy, entropy, std[0][0], mean[0][0], R, 1])
-=======
 #     with open('data_training1.csv', mode='a', newline="") as data_training:
 #         data_write = csv.writer(data_training, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 #         data_write.writerow([Energy, entropy, std[0][0], mean[0][0], R, 'mentah'])
->>>>>>> 9a3bc3c7c4809c877ce91b4be7ef5f1046e9cf53
 
         
 # # window
