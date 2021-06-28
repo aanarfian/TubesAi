@@ -88,7 +88,7 @@ def predict(summaries, row):
         if best_label is None or probability > best_prob:
             best_prob = probability
             best_label = class_value
-    return best_label
+    return best_label, probabilities
 
 # # Test separating data by class
 # dataset = [[3.393533211, 2.331273381, 0],
@@ -105,19 +105,19 @@ def predict(summaries, row):
 # probabilities = calculate_class_probabilities(summaries, dataset[3])
 # print(probabilities)
 
-filename = 'data_training1.csv'
-dataset = load_csv(filename)
+# filename = 'data_training1.csv'
+# dataset = load_csv(filename)
 
-for i in range(len(dataset[0])-1):
-    str_column_to_float(dataset, i)
+# for i in range(len(dataset[0])-1):
+#     str_column_to_float(dataset, i)
 
-str_column_to_int(dataset, len(dataset[0])-1)
-# fit model
-model = summarize_by_class(dataset)
-# define a new record
+# str_column_to_int(dataset, len(dataset[0])-1)
+# # fit model
+# model = summarize_by_class(dataset)
+# # define a new record
 
-probabilities = calculate_class_probabilities(model, dataset[14])
-print(probabilities)
+# probabilities = calculate_class_probabilities(model, dataset[14])
+# print(probabilities)
 
 # row = [5.7,2.9,4.2,1.3]
 # # predict the label
