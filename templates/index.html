@@ -2,73 +2,72 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klasifikasi Pisang</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <title>Prediksi Kemtangan Pisang</title>
+    <style>
+        .layout-page {
+            width: 1200px;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container py-4">
-        <h2 class="text-center mb-4">Prediksi Kematangan Pisang</h2>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="bg-white rounded shadow p-3">
-
-                    <div class="mb-3">
-                        <label for="energy" class="form-label">Energi</label>
-                        <input type="text" class="form-control" id="energy" disabled>
-                    </div>
-                    <div class="mb-3">
-                        <label for="entropy" class="form-label">Entropi</label>
-                        <input type="text" class="form-control" id="entropy" disabled>
-                    </div>
-                    <div class="mb-3">
-                        <label for="std" class="form-label">Standar Deviasi</label>
-                        <input type="text" class="form-control" id="std" disabled>
-                    </div>
-                    <div class="mb-3">
-                        <label for="smoothness" class="form-label">Smoothness</label>
-                        <input type="text" class="form-control" id="smoothness" disabled>
-                    </div>
-                    <div class="mb-3">
-                        <div class="row">
-                            <div class="col-6">
-                                <label for="matang" class="form-label">Probabilitas Matang</label>
-                                <input type="text" class="form-control" id="matang" disabled>
-                            </div>
-                            <div class="col-6">
-                                <label for="mentah" class="form-label">Probabilitas Mentah</label>
-                                <input type="text" class="form-control" id="mentah" disabled>
-                            </div>
+    <div class="container layout-page">
+        <div class="row d-flex align-items-center" style="min-height: 100vh;">
+            <div class="col">
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">file input</label>
+                    <input class="form-control" type="file" id="formFile">
+                </div>
+                <div class="mb-3">
+                    <label for="inputPassword" class="col-form-label">Energy</label>
+                    <input type="text" class="form-control" id="inputPassword" disabled>
+                </div>
+                <div class="mb-3">
+                    <label for="inputPassword" class="col-form-label">Entropy</label>
+                    <input type="text" class="form-control" id="inputPassword" disabled>
+                </div>
+                <div class="mb-3">
+                    <label for="inputPassword" class="col-form-label">Rerata Intensitas</label>
+                    <input type="text" class="form-control" id="inputPassword" disabled>
+                </div>
+                <div class="mb-3">
+                    <label for="inputPassword" class="col-form-label">Rerata Kontras</label>
+                    <input type="text" class="form-control" id="inputPassword" disabled>
+                </div>
+                <div class="mb-3">
+                    <label for="inputPassword" class="col-form-label">Smoothness</label>
+                    <input type="text" class="form-control" id="inputPassword" disabled>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="inputPassword" class="col-form-label">Matang</label>
+                            <input type="text" class="form-control" id="inputPassword" disabled>
                         </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="prediksi" class="form-label">Prediksi</label>
-                        <input type="text" class="form-control" id="prediksi" disabled>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="inputPassword" class="col-form-label">mentah</label>
+                            <input type="text" class="form-control" id="inputPassword" disabled>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 h-100">
-                <div class="bg-white shadow rounded p-3">
-                    <h5>Upload Gambar</h5>
-                    <form action="">
-                        <div class="input-group mb-3">
-                            <input type="file" class="form-control" id="inputGroupFile02">
-                            <label class="input-group-text" for="inputGroupFile02">Upload</label>
-                        </div>
-                    </form>
+            <div class="col">
+                <div class="row">
+                    <img src="https://via.placeholder.com/640x480" alt="original" class="mb-5" style="width: 480px;">
+                </div>
+                <div class="row">
+                    <img src="https://via.placeholder.com/640x480" alt="original" style="width: 480px">
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

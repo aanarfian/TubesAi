@@ -3,31 +3,33 @@ import image_extraction as im
 import naive_bayes as nb
 
 # Extract Feature dulu gan
-pathfile = 'asset/data_test/mateng_test/1.jpg'
-gblur = im.process_image(pathfile)
-energy = im.get_energy(gblur)
-entropy = im.get_entropy(gblur)
-intensity, st_deviation = im.get_intensity_and_st_deviation(gblur)
-smoothness = im.get_smoothnes(st_deviation)
+for j in range(16):
+    print(str(j+1))
+    pathfile = 'asset/data_test/mentah_test/'+str(j+1)+'.jpg'
+    gblur = im.process_image(pathfile)
+    energy = im.get_energy(gblur)
+    entropy = im.get_entropy(gblur)
+    intensity, st_deviation = im.get_intensity_and_st_deviation(gblur)
+    smoothness = im.get_smoothnes(st_deviation)
 
-# Load data training
-filename = 'data_training2.csv'
-dataset = nb.load_csv(filename)
+    # Load data training
+    filename = 'data_training2.csv'
+    dataset = nb.load_csv(filename)
 
-# convert string ke float
-for i in range(len(dataset[0])-1):
-    nb.str_column_to_float(dataset, i)
+    # convert string ke float
+    for i in range(len(dataset[0])-1):
+        nb.str_column_to_float(dataset, i)
 
-# Convert class ke int
-lookup = nb.str_column_to_int(dataset, len(dataset[0])-1)
-# fit model
-model = nb.summarize_by_class(dataset)
-# define a new record
-row = [energy, entropy, st_deviation, intensity, smoothness]
+    # Convert class ke int
+    lookup = nb.str_column_to_int(dataset, len(dataset[0])-1)
+    # fit model
+    model = nb.summarize_by_class(dataset)
+    # define a new record
+    row = [energy, entropy, st_deviation, intensity, smoothness]
 
-# # predict the label
-label = nb.predict(model, row)
-print('- Data=%s\n- Predicted: %s\n- Probabilities: %s' % (row, label[0], label[1]))
+    # # predict the label
+    label = nb.predict(model, row)
+    print('- Data=%s\n- Predicted: %s\n- Probabilities: %s' % (row, label[0], label[1]))
 
 # Write data baru hasil test
 with open('data_training2.csv', mode='a', newline="") as data_training:
