@@ -42,7 +42,7 @@ for i in range(13) :
     print("smoothness", R)
 
     
-    with open('data_training1.csv', mode='a', newline="") as data_training:
+    with open('data_training.csv', mode='a', newline="") as data_training:
         data_write = csv.writer(data_training, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
         data_write.writerow([Energy, entropy, std[0][0], mean[0][0], R, 1])
 
