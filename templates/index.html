@@ -1,12 +1,85 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Klasifikasi Pisang</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Prediksi Kemtangan Pisang</title>
 </head>
+
 <body>
-    <h1>Hello World</h1>
+    <div class="container py-4">
+        <h2 class="text-center mb-4">Prediksi Kematangan Pisang</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="bg-white rounded shadow p-3">
+
+                    <div class="mb-3">
+                        <label for="energy" class="form-label">Energi</label>
+                        <input type="text" class="form-control" id="energy" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="entropy" class="form-label">Entropi</label>
+                        <input type="text" class="form-control" id="entropy" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="std" class="form-label">Standar Deviasi</label>
+                        <input type="text" class="form-control" id="std" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="smoothness" class="form-label">Smoothness</label>
+                        <input type="text" class="form-control" id="smoothness" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="matang" class="form-label">Probabilitas Matang</label>
+                                <input type="text" class="form-control" id="matang" disabled>
+                            </div>
+                            <div class="col-6">
+                                <label for="mentah" class="form-label">Probabilitas Mentah</label>
+                                <input type="text" class="form-control" id="mentah" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="prediksi" class="form-label">Prediksi</label>
+                        <input type="text" class="form-control" id="prediksi" disabled>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 h-100">
+                <div class="bg-white shadow rounded p-3">
+                    <h5>Upload Gambar</h5>
+                    <form action="">
+                        <div class="input-group mb-3">
+                            <input type="file" class="form-control" id="inputGroupFile02">
+                            <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
 </body>
+
 </html>
