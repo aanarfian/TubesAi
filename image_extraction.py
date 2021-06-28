@@ -1,19 +1,16 @@
 from pywt import dwt2
-import cv2
 import numpy as np
-import math
+import cv2
 from skimage.feature import greycomatrix
-import csv
 
-for i in range(13) :
-    pathfile = "mentah/" +str(i+1)+ ".jpg"
-    # pathfile = "mateng/" +str(i+1)+ ".jpg"
+def process_image(filename):
     # load image dan convert grayscale
-    img = cv2.imread(pathfile, 0)
+    img = cv2.imread(filename, 0)
     # menghaluskan gambar dengan blur
     gblur = cv2.GaussianBlur(img, (5, 5), 0)
+    return gblur
 
-
+def get_energy(gblur):
     m,n = gblur.shape
     cA, (cH, cV, cD) = dwt2(gblur,'db1')
     # a - LL, h - LH, v - HL, d - HH as in matlab
@@ -21,33 +18,19 @@ for i in range(13) :
     cVsq = [[elem * elem for elem in inner] for inner in cV]
     cDsq = [[elem * elem for elem in inner] for inner in cD]
     Energy = (np.sum(cHsq) + np.sum(cVsq) + np.sum(cDsq))/(m*n)
-    print ("energy =", Energy)
+    return Energy
 
-    # print ("energy =", energy)
-
-    # entropi
+def get_entropy(gblur):
     glcm = np.squeeze(greycomatrix(gblur, distances=[1], 
                                 angles=[0], symmetric=True, 
                                 normed=True))
     entropy = -np.sum(glcm*np.log2(glcm + (glcm==0)))
-    print("entropi", entropy)
+    return entropy
 
-    # deviasi & mean
+def get_intensity_and_st_deviation(gblur):
     mean, std = cv2.meanStdDev(gblur)
-    print("rerata kontras", std[0][0])
-    print("intensitas", mean[0][0])
+    return mean[0][0], std[0][0]
 
-    # smoothness
-    R = 1 - 1/(1+std[0][0]**2)
-    print("smoothness", R)
-
-    
-    with open('data_training1.csv', mode='a', newline="") as data_training:
-        data_write = csv.writer(data_training, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-        data_write.writerow([Energy, entropy, std[0][0], mean[0][0], R, 'mentah'])
-
-        
-# window
-# cv2.imshow("shapes", gblur)
-# cv2.waitKey(0)
-# cv2.destroyAllWindows()
+def get_smoothnes(std):
+    R = 1 - 1/(1+std**2)
+    return R

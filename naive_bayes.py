@@ -105,7 +105,7 @@ def predict(summaries, row):
 # probabilities = calculate_class_probabilities(summaries, dataset[3])
 # print(probabilities)
 
-filename = 'dataset.csv'
+filename = 'data_training1.csv'
 dataset = load_csv(filename)
 
 for i in range(len(dataset[0])-1):
@@ -115,8 +115,12 @@ str_column_to_int(dataset, len(dataset[0])-1)
 # fit model
 model = summarize_by_class(dataset)
 # define a new record
-row = [5.7,2.9,4.2,1.3]
-# predict the label
-label = predict(model, row)
-print('Data=%s, Predicted: %s' % (row, label))
+
+probabilities = calculate_class_probabilities(model, dataset[14])
+print(probabilities)
+
+# row = [5.7,2.9,4.2,1.3]
+# # predict the label
+# label = predict(model, row)
+# print('Data=%s, Predicted: %s' % (row, label))
 
