@@ -3,7 +3,7 @@ import image_extraction as im
 import naive_bayes as nb
 
 # Extract Feature dulu gan
-pathfile = 'asset/data_test/mentah_test/1.jpg'
+pathfile = 'asset/data_test/mateng_test/1.jpg'
 gblur = im.process_image(pathfile)
 energy = im.get_energy(gblur)
 entropy = im.get_entropy(gblur)
