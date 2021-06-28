@@ -1,3 +1,4 @@
+import csv
 import image_extraction as im
 import naive_bayes as nb
 
@@ -18,7 +19,7 @@ for i in range(len(dataset[0])-1):
     nb.str_column_to_float(dataset, i)
 
 # Convert class ke int
-nb.str_column_to_int(dataset, len(dataset[0])-1)
+lookup = nb.str_column_to_int(dataset, len(dataset[0])-1)
 # fit model
 model = nb.summarize_by_class(dataset)
 # define a new record
@@ -27,6 +28,15 @@ row = [energy, entropy, st_deviation, intensity, smoothness]
 # # predict the label
 label = nb.predict(model, row)
 print('- Data=%s\n- Predicted: %s\n- Probabilities: %s' % (row, label[0], label[1]))
+
+# Write data baru hasil test
+with open('data_training2.csv', mode='a', newline="") as data_training:
+    data_write = csv.writer(data_training, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+    if lookup['matang'] == label[0]:
+        class_string = 'matang'
+    else:
+        class_string = 'mentah'
+    data_write.writerow([energy, entropy, st_deviation, intensity, smoothness, class_string])
 
 
 # for i in range(13) :
