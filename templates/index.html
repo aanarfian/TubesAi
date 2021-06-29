@@ -85,10 +85,11 @@
             </div>
             <div class="col">
                 <div class="row">
-                    <img src="https://via.placeholder.com/640x480" alt="original" class="mb-5" style="width: 480px;">
+                    <img src="{{ url_for('upload_image', name=content[10]) }}" alt="original" class="mb-5"
+                        style="width: 480px;">
                 </div>
                 <div class="row">
-                    <img src="https://via.placeholder.com/640x480" alt="original" style="width: 480px">
+                    <img src="{{ url_for('gblur_image', name=content[10]) }}" alt="original" style="width: 480px">
                 </div>
             </div>
         </div>
