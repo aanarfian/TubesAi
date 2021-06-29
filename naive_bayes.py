@@ -1,5 +1,6 @@
 from csv import reader
 from math import exp, pi, sqrt
+from random import randrange
 
 # Load a CSV file
 def load_csv(filename):
@@ -42,6 +43,46 @@ def separate_by_class(dataset):
 
 def mean(numbers):
     return sum(numbers)/float(len(numbers))
+
+# Split a dataset into k folds
+def cross_validation_split(dataset, n_folds):
+	dataset_split = list()
+	dataset_copy = list(dataset)
+	fold_size = int(len(dataset) / n_folds)
+	for _ in range(n_folds):
+		fold = list()
+		while len(fold) < fold_size:
+			index = randrange(len(dataset_copy))
+			fold.append(dataset_copy.pop(index))
+		dataset_split.append(fold)
+	return dataset_split
+ 
+# Calculate accuracy percentage
+def accuracy_metric(actual, predicted):
+	correct = 0
+	for i in range(len(actual)):
+		if actual[i] == predicted[i]:
+			correct += 1
+	return correct / float(len(actual)) * 100.0
+
+# Evaluate an algorithm using a cross validation split
+def evaluate_algorithm(dataset, algorithm, n_folds, *args):
+	folds = cross_validation_split(dataset, n_folds)
+	scores = list()
+	for fold in folds:
+		train_set = list(folds)
+		train_set.remove(fold)
+		train_set = sum(train_set, [])
+		test_set = list()
+		for row in fold:
+			row_copy = list(row)
+			test_set.append(row_copy)
+			row_copy[-1] = None
+		predicted = algorithm(train_set, test_set, *args)
+		actual = [row[-1] for row in fold]
+		accuracy = accuracy_metric(actual, predicted)
+		scores.append(accuracy)
+	return scores
 
 # Calculate the standard deviation of a list of numbers
 def stdev(numbers):
@@ -90,6 +131,15 @@ def predict(summaries, row):
             best_label = class_value
     return best_label, probabilities
 
+# Naive Bayes Algorithm
+def naive_bayes(train, test):
+	summarize = summarize_by_class(train)
+	predictions = list()
+	for row in test:
+		output = predict(summarize, row)
+		predictions.append(output)
+	return(predictions)
+
 # # Test separating data by class
 # dataset = [[3.393533211, 2.331273381, 0],
 #            [3.110073483, 1.781539638, 0],
@@ -113,14 +163,10 @@ def predict(summaries, row):
 
 # str_column_to_int(dataset, len(dataset[0])-1)
 # # fit model
-# model = summarize_by_class(dataset)
-# # define a new record
 
-# probabilities = calculate_class_probabilities(model, dataset[14])
-# print(probabilities)
-
-# row = [5.7,2.9,4.2,1.3]
-# # predict the label
-# label = predict(model, row)
-# print('Data=%s, Predicted: %s' % (row, label))
+# # evaluate algorithm
+# n_folds = 5
+# scores = evaluate_algorithm(dataset, naive_bayes, n_folds)
+# print('Scores: %s' % scores)
+# print('Mean Accuracy: %.3f%%' % (sum(scores)/float(len(scores))))
 

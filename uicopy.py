@@ -11,7 +11,6 @@ app.secret_key = "secret key"
 app.config['UPLOAD_FOLDER'] = os.path.join('asset', 'upload')
 app.config['GBLUR_FOLDER'] = os.path.join('asset', 'gblur')
 
-
 ALLOWED_EXTENSIONS = set(['png', 'jpg'])
 
 def allowed_file(filename):
@@ -41,22 +40,12 @@ def home():
 			cv2.imwrite(os.path.join(app.config['GBLUR_FOLDER'], new_filename), gblur)
 
 			imageData, classified, matangmentah, lookup = testui.process_image(os.path.join(app.config['UPLOAD_FOLDER'], new_filename))
-			if lookup["matang"]==matangmentah[0]:
-				klasifikasi = "Mateng"
-				matang = matangmentah[0]
-				mentah = matangmentah[1]
-			elif lookup["matang"]==matangmentah[1]:
-				klasifikasi = "Mateng"
-				matang = matangmentah[1]
-				mentah = matangmentah[0]
-			elif lookup["mentah"]==matangmentah[0]:
+			matang = matangmentah[lookup['matang']]
+			mentah = matangmentah[lookup['mentah']]
+			if lookup["matang"]==classified:
+				klasifikasi = "Matang"
+			else :
 				klasifikasi = "Mentah"
-				matang = matangmentah[0]
-				mentah = matangmentah[1]
-			else:
-				klasifikasi =  "Mentah"
-				matang = matangmentah[1]
-				mentah = matangmentah[0]
 			print(imageData, classified, matangmentah)
 			energy = imageData[0]
 			entropy = imageData[1]

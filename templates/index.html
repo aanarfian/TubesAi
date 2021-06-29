@@ -16,9 +16,9 @@
 </head>
 
 <body>
-    <div class="container layout-page">
+    <div class="container py-5">
         <div class="row d-flex align-items-center" style="min-height: 100vh;">
-            <div class="col">
+            <div class="col-md-6">
                 <form action="/" method="POST" enctype="multipart/form-data" name="inputfile">
                     <div class="mb-3 form-group">
                         <label for="formFile" class="form-label">file input</label>
@@ -27,68 +27,50 @@
                     </div>
                 </form>
                 <div class="mb-3">
-                    <p>Energy</p>
-                    <div class="alert alert-light border" role="alert">
-                        {{content[0]}}
-                    </div>
-                    <!-- <label for="Energy" class="col-form-label">Energy</label>
-                    <input type="text" class="form-control" id="Energy" disabled value=""> -->
+                    <label for="Energy" class="col-form-label">Energy</label>
+                    <input type="text" class="form-control" id="Energy" disabled value="{{content[0]}}">
                 </div>
                 <div class="mb-3">
-                    <p>Entropy</p>
-                    <div class="alert alert-light border" role="alert">
-                        {{content[1]}}
-                    </div>
+                    <label for="Entropy" class="col-form-label">Entropy</label>
+                    <input type="text" class="form-control" id="Entropy" disabled value="{{content[1]}}">
                 </div>
                 <div class="mb-3">
-                    <p>Rerata Intensitas</p>
-                    <div class="alert alert-light border" role="alert">
-                        {{content[2]}}
-                    </div>
+                    <label for="Rerata_Intensitas" class="col-form-label">Rerata Intensitas</label>
+                    <input type="text" class="form-control" id="Rerata_Intensitas" disabled value="{{content[2]}}">
                 </div>
                 <div class="mb-3">
-                    <p>Rerata Kontras</p>
-                    <div class="alert alert-light border" role="alert">
-                        {{content[3]}}
-                    </div>
+                    <label for="Rerata_Kontras" class="col-form-label">Rerata Kontras</label>
+                    <input type="text" class="form-control" id="Rerata_Kontras" disabled value="{{content[3]}}">
                 </div>
                 <div class="mb-3">
-                    <p>Smoothness</p>
-                    <div class="alert alert-light border" role="alert">
-                        {{content[4]}}
-                    </div>
+                    <label for="Smoothness" class="col-form-label">Smoothness</label>
+                    <input type="text" class="form-control" id="Smoothness" disabled value="{{content[4]}}">
                 </div>
                 <div class="row">
                     <div class="col">
                         <div class="mb-3">
-                            <p>Matang</p>
-                            <div class="alert alert-light border" role="alert">
-                                {{content[5]}}
-                            </div>
+                            <label for="Matang" class="col-form-label">Matang</label>
+                            <input type="text" class="form-control" id="Matang" disabled value="{{content[5]}}">
                         </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
-                            <p>Mentah</p>
-                            <div class="alert alert-light border" role="alert">
-                                {{content[6]}}
-                            </div>
+                            <label for="Mentah" class="col-form-label">Mentah</label>
+                            <input type="text" class="form-control" id="Mentah" disabled value="{{content[6]}}">
                         </div>
                     </div>
                 </div>
                 <div class="mb-3">
-                    <p>Classified</p>
-                    <div class="alert alert-light border" role="alert">
-                        {{content[7]}}
-                    </div>
+                    <label for="Classified" class="col-form-label">Classified</label>
+                    <input type="text" class="form-control" id="Classified" disabled value="{{content[7]}}">
                 </div>
             </div>
-            <div class="col">
-                <div class="row">
+            <div class="col-md-6">
+                <div class="">
                     <img src="{{ url_for('upload_image', name=content[10]) if content[10] else 'https://via.placeholder.com/640x480' }}"
                         alt="original" class="mb-5" style="width: 480px;">
                 </div>
-                <div class="row">
+                <div class="">
                     <img src="{{ url_for('gblur_image', name=content[10]) if content[10] else 'https://via.placeholder.com/640x480' }}"
                         alt="original" style="width: 480px">
                 </div>
