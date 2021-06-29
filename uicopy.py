@@ -29,7 +29,7 @@ def home():
 	klasifikasi = 0
 	img = None
 	gblur = None
-	new_filename = ModuleNotFoundError
+	new_filename = None
 	if request.method == "POST":
 		if request.files:
 			image = request.files["file"]
